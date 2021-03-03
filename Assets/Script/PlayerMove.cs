@@ -19,38 +19,43 @@ public class PlayerMove : MonoBehaviour, IPointerDownHandler
 
     void Update()
     {
-        if (isMove == 1)
-            player.transform.position = Vector3.MoveTowards(player.transform.position, target, 0.1f);
-
         if (player.transform.position == target)
             isMove = 0;
+
+        if (isMove == 1)
+        {
+            player.transform.position = Vector3.MoveTowards(player.transform.position, target, 0.1f);
+        }
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (gameObject.name == "Left" && isMove == 0)
         {
-            isMove = 1;
-            target = player.transform.position + new Vector3(-1, 0, 0);
+            target = player.transform.position + new Vector3(-1.1f, 0, 0);
             Debug.Log("Left"+target);
         }
+
         if (gameObject.name == "Right")
-        {
-            isMove = 1;
-            target = player.transform.position + new Vector3(1f, 0, 0);
+        { 
+            target = player.transform.position + new Vector3(1.1f, 0, 0);
             Debug.Log("Right" + target);
         }
+
         if (gameObject.name == "Up")
         {
-            isMove = 1;
-            target = player.transform.position + new Vector3(0, 0, 1);
+            target = player.transform.position + new Vector3(0, 0, 1.1f);
             Debug.Log("Up" + target);
         }
+
         if (gameObject.name == "Down")
         {
-            isMove = 1;
-            target = player.transform.position + new Vector3(0, 0, -1);
+            target = player.transform.position + new Vector3(0, 0, -1.1f);
             Debug.Log("Down" + target);
         }
+
+        isMove = 1;
+        player.transform.LookAt(target);
     }
 }
