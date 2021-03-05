@@ -33,7 +33,7 @@ public class NPCScript : MonoBehaviour
             isMove = true;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, target, 0.03f);
+        transform.position = Vector3.MoveTowards(transform.position, target, 1f * Time.deltaTime);
         transform.forward = transform.position - mainCharacter.transform.position;
 
         if (transform.position == target)
