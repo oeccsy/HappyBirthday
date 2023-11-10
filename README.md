@@ -15,8 +15,8 @@
 <div align="center">
   <table>
     <tr>
-      <th><img src="https://github.com/oeccsy/HappyBirthday/assets/77562357/7eb9ea0b-7bad-4ba8-87a9-c3a93884b832" width="500px" height="228px"/></th>
-      <th><img src="https://github.com/oeccsy/HappyBirthday/assets/77562357/c72f52ff-b20b-4c51-8b14-3c540f17ebfd" width="500px" height="225px"/></th>
+      <th><img src="https://github.com/oeccsy/HappyBirthday/assets/77562357/7eb9ea0b-7bad-4ba8-87a9-c3a93884b832" width="500px"/></th>
+      <th><img src="https://github.com/oeccsy/HappyBirthday/assets/77562357/c72f52ff-b20b-4c51-8b14-3c540f17ebfd" width="500px"/></th>
     </tr>
     <tr>
       <td align="center">▲ Title</td>
@@ -54,9 +54,9 @@
 <div align="center" height="400px">
   <table>
     <tr>
-      <th><img src="https://github.com/oeccsy/HappyBirthday/assets/77562357/d5ce3154-ab26-4aab-b2ad-18993378edfc" width="500px" height="225px"/></th>
+      <th><img src="https://github.com/oeccsy/HappyBirthday/assets/77562357/d5ce3154-ab26-4aab-b2ad-18993378edfc" width="500px"/></th>
       <th> => </th>
-      <th><img src="https://github.com/oeccsy/HappyBirthday/assets/77562357/c72f52ff-b20b-4c51-8b14-3c540f17ebfd" width="500px" height="225px"/></th>
+      <th><img src="https://github.com/oeccsy/HappyBirthday/assets/77562357/c72f52ff-b20b-4c51-8b14-3c540f17ebfd" width="500px"/></th>
     </tr>
   </table>
 </div>
