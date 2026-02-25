@@ -85,3 +85,6 @@ google-services*.*
 
 # Editor User Settings
 EditorUserSettings.asset
+
+# Build
+.utmp/
