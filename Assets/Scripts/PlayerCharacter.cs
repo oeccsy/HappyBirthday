@@ -1,60 +1,81 @@
 using System.Collections;
+using System.Data;
 using UnityEngine;
-using UnityEngine.UIElements;
-enum State
-{
-    Idle,
-    Moving
-}
 
 public class PlayerCharacter : MonoBehaviour
 {
+    enum State
+    {
+        Idle,
+        Moving
+    }
+
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private AudioSource audioSource;
 
     [SerializeField]
     Vector2Int position;
     [SerializeField]
+    Vector2Int dest;
+    [SerializeField]
     private State state = State.Idle;
+    [SerializeField]
+    private WaitForSeconds lookAroundInterval = new WaitForSeconds(5f);
 
     public Vector2Int Position => position;
+    public Vector2Int Dest => dest;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = Resources.Load<AudioClip>("Sound/Walk");
 
         position = new Vector2Int(0, 0);
+        dest = position;
+    }
+    private void Start()
+    {
+        StartCoroutine(LookAroundRoutine());
     }
 
     public void MoveUp(Woodroom woodroom)
     {
+        if (position.y >= woodroom.EndPosition.y) return; 
         StartCoroutine(Move(woodroom, position + Vector2Int.up));
     }
 
     public void MoveDown(Woodroom woodroom)
     {
+        if (position.y <= woodroom.BeginPosition.y) return;
         StartCoroutine(Move(woodroom, position + Vector2Int.down));
     }
 
     public void MoveLeft(Woodroom woodroom)
     {
+        if (position.x <= woodroom.BeginPosition.x) return;
         StartCoroutine(Move(woodroom, position + Vector2Int.left));
     }
 
     public void MoveRight(Woodroom woodroom)
     {
+        if (position.x >= woodroom.EndPosition.x) return;
         StartCoroutine(Move(woodroom, position + Vector2Int.right));
     }
 
-    public IEnumerator Move(Woodroom woodroom, Vector2Int dest)
+    private IEnumerator Move(Woodroom woodroom, Vector2Int dest)
     {
-        Debug.Log("Move");
         if(state == State.Moving) yield break;
 
         Vector3 actualDest = woodroom.GetActualPosition(dest);
         state = State.Moving;
+        animator.SetInteger("State", (int)state);
+        this.dest = dest;
 
-        Debug.Log(actualDest);
+        transform.LookAt(actualDest);
+        audioSource.Play();
 
         while (transform.position != actualDest)
         {
@@ -64,5 +85,17 @@ public class PlayerCharacter : MonoBehaviour
 
         position = dest;
         state = State.Idle;
+        animator.SetInteger("State", (int)state);
+    }
+
+    private IEnumerator LookAroundRoutine()
+    {
+        while(true)
+        {
+            yield return lookAroundInterval;
+            animator.SetBool("LookAround", true);
+            yield return lookAroundInterval;
+            animator.SetBool("LookAround", false);
+        }
     }
 }

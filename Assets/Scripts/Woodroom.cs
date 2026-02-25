@@ -10,7 +10,10 @@ public class Woodroom : MonoBehaviour
     private Vector3 actualBeginPosition;
     [SerializeField]
     private Vector3 actualEndPosition;
-    
+
+    public Vector2Int BeginPosition => beginPosition;
+    public Vector2Int EndPosition => endPosition;
+
     private void Awake()
     {
         beginPosition = new Vector2Int(0, 0);

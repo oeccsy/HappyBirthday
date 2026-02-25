@@ -26,6 +26,13 @@ public class GameScene : MonoBehaviour
         gameSceneUI.SwButton.onClick.AddListener(() => playerCharacter.MoveLeft(woodroom));
         gameSceneUI.SeButton.onClick.AddListener(() => playerCharacter.MoveDown(woodroom));
 
+        gameSceneUI.NwButton.onClick.AddListener(() => npc.RandomMove(woodroom, playerCharacter));
+        gameSceneUI.NeButton.onClick.AddListener(() => npc.RandomMove(woodroom, playerCharacter));
+        gameSceneUI.SwButton.onClick.AddListener(() => npc.RandomMove(woodroom, playerCharacter));
+        gameSceneUI.SeButton.onClick.AddListener(() => npc.RandomMove(woodroom, playerCharacter));
+
         sound.PlayHappyBirthday();
+
+        npc.transform.forward = npc.transform.position - playerCharacter.transform.position;
     }
 }

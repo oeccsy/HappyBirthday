@@ -32,7 +32,7 @@ public class TitleSceneUI : MonoBehaviour
         {
             pressText.text = "";
             yield return blinkInterval;
-            pressText.text = "Press To Start";
+            pressText.text = "Go Get Your Present";
             yield return blinkInterval;
         }
     }
